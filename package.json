@@ -1,0 +1,15 @@
+{
+  "name": "price-comparison-system",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "scrape": "npm run once --workspace @ps/back-end",
+    "dev:back": "npm run dev --workspace @ps/back-end",
+    "dev:front": "npm run dev --workspace @ps/front-end",
+    "build:front": "npm run build --workspace @ps/front-end"
+  }
+}

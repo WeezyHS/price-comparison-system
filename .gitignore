@@ -1,0 +1,100 @@
+#VARIÁVEIS DE AMBIENTE / SEGURANÇA
+#Ignora TODOS os .env (back, front, QUALQUER subpasta) e variantes locais
+.env
+.env.*
+
+#Permite TODO e qualquer .env.example (em QUALQUER pasta/subpasta)
+#Ir pro git (ex: apps/back-end/.env.example, raiz, etc)
+!.env.example
+!**/.env.example
+
+#Arquivos locais de override (Vite/Supabase)
+*.local
+
+#DEPENDÊNCIAS (npm workspaces / monorepo)
+node_modules/
+**/node_modules/
+
+#Locks individuais dos workspaces (em monorepo só existe 1 lock na raiz)
+#apps/*/package-lock.json
+#apps/*/pnpm-lock.yaml
+#packages/*/pnpm-lock.yaml
+
+#OUTPUTS DE BUILD / COMPILAÇÃO
+dist/
+build/
+.output/        # TanStack Start / Nitro
+.turbo/         # Turborepo (se usar depois)
+.vercel/        # Deploy Vercel
+.netlify/
+.svelte-kit/
+
+# ============================================================
+# 🧪 CACHE / LOGS / DEBUG
+# ============================================================
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.oxlintcache
+
+# ============================================================
+# 💻 SISTEMA OPERACIONAL
+# ============================================================
+# Windows
+Thumbs.db
+$RECYCLE.BIN/
+Desktop.ini
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ============================================================
+# ✏️ EDITORES / IDE
+# ============================================================
+# VS Code (mantém apenas extensões e settings recomendadas da equipe)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+
+# JetBrains / IntelliJ / WebStorm / PHPStorm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Outros
+.atom/
+.brackets.json
+
+# ============================================================
+# 🗄️ SUPABASE CLI (se usar migrations locais depois)
+# ============================================================
+.supabase/
+
+# ============================================================
+# 🧩 OUTROS (arquivos temporários)
+# ============================================================
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Office (planilhas temporárias de preços)
+~$*.xlsx
+~$*.xls
+~$*.csv
