@@ -1,11 +1,24 @@
 export function cleanPrice(text) {
-    return parseFloat(
-        text
-            .replace("R$", "")
-            .replace(/\s/g, "")
-            .replace(/\./g, "")
-            .replace(",", ".")
-    );
+    if (!text || typeof text !== 'string') return NaN;
+
+    let raw = String(text).trim();
+    if (!raw.length) return NaN;
+
+    raw = raw
+        .replace(/[\u200B-\u200D\uFEFF]/g, '')
+        .replace(/^(R\$|\$|USD|EUR|£|€|\s)*/i, '')
+        .replace(/\s+/g, '')
+        .replace(/,/g, '.')
+        .replace(/\.(?=.*\.)/g, '')
+        .replace(/[^0-9.\-]/g, '')
+        .replace(/\.$/, '');
+    
+    if (!raw) return NaN;
+
+    const price = parseFloat(raw);
+    if (isNaN(price) || price < 0) return NaN;
+
+    return Number(price.toFixed(2));
 }
 
 export function delay(ms) {
